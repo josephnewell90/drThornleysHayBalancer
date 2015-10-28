@@ -134,7 +134,7 @@ $drawerTransition: all 0.4s cubic-bezier(0.46, 0.01, 0.32, 1);
 
 // Sizing variables
 $siteWidth: 1180px;
-$gutter: 30px;
+$gutter: 2%;
 $gridGutter: 30px; // can be a %, but nested grids will have smaller margins because of it
 $radius: 3px;
 
@@ -707,6 +707,7 @@ $class-type: unquote(".");
 ==============================================================================*/
 html {
   background-color: $colorFooterBg;
+  box-sizing: border-box;
 }
 
 body {
@@ -721,7 +722,6 @@ body {
   @include clearfix();
   max-width: $siteWidth;
   margin: 0 auto;
-  padding: 0 ($gutter / 2);
 
   @include at-query ($min, $small) {
     padding: 0 $gutter;
@@ -730,8 +730,12 @@ body {
 
 .main-content {
   display: block;
-  margin-top: $gutter;
   padding-bottom: $gutter * 2;
+}
+
+.fullScreen {
+    width: 100%;
+    margin: 0;
 }
 
 /*============================================================================
@@ -1352,6 +1356,20 @@ iframe {
     width: 100%;
     height: 100%;
   }
+}
+
+/* Set up main banner image */
+.mainBanner figcaption {
+    margin-top: -50%;
+    text-align: right;
+}
+.mainBanner figcaption span {
+    display: block;
+    margin: 1em 2%;
+    font-size: 2em;
+}
+.mainBanner figcaption a.btn {
+    margin-right: 2%;
 }
 
 
