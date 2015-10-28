@@ -92,3 +92,11 @@ Timber is released under the [MIT License](LICENSE).
 [4]: http://cheat.markdunkley.com
 [5]: http://meetup.shopify.com/
 [6]: http://ecommerce.shopify.com/c/ecommerce-design
+
+Installation
+---------------------
+Clone repository from https://github.com/josephnewell90/drThornleysHayBalancer
+Install Ruby (http://rubyinstaller.org/)
+Navigate to file directory
+Run gem install shopify_theme
+Set up Private API with theme configure api_key password store_domain (https://github.com/Shopify/shopify_theme)
