@@ -147,6 +147,11 @@
       },
       {
         "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram link"
+      },
+      {
+        "type": "text",
         "id": "social_twitter_link",
         "label": "Twitter link"
       },
@@ -165,6 +170,34 @@
         "id": "newsletter_form_action",
         "label": "MailChimp Form Action URL",
         "info": "[Where do I find my MailChimp form action URL?](http:\/\/docs.shopify.com\/support\/configuration\/store-customization\/where-do-i-get-my-mailchimp-form-action)"
+      },
+      {
+        "type": "checkbox",
+        "id": "footer_contact_enable",
+        "label": "Show Contact Information"
+      },
+      {
+        "type": "text",
+        "id": "social_addressOne",
+        "label": "Address Line 1",
+        "default": "Address Line 1"
+      },
+      {
+        "type": "text",
+        "id": "social_addressTwo",
+        "label": "Address Line 2",
+        "default": "Address Line 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "footer_email_enable",
+        "label": "Show Email"
+      },
+      {
+        "type": "text",
+        "id": "social_email",
+        "label": "Email",
+        "default": "you@example.com"
       }
     ]
   },

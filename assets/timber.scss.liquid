@@ -81,6 +81,11 @@ $breakpoint-has-pull:  ('medium', 'medium-down', 'large');
 $colorPrimary: {{ settings.color_primary }};
 $colorSecondary: {{ settings.color_secondary }};
 
+// Template Colors
+$raven: #7A818B;
+$sienna: #D27647;
+$asphalt: #140B06;
+
 // Button colors
 $colorBtnPrimary: $colorPrimary;
 $colorBtnPrimaryHover: darken($colorBtnPrimary, 10%);
@@ -1218,7 +1223,7 @@ ol.alpha { list-style: lower-alpha outside; }
 
 /* Feature diagram list */
 .featureDiagram ol li {
-  color: #D27647;
+  color: $sienna;
   list-style-position: inside;
   font-size: 1.57143em;
   margin-bottom: 2em;
@@ -1777,7 +1782,7 @@ label.error {
 }
 
 .social-icons li {
-  margin: 0 ($gutter / 2) ($gutter / 2);
+  margin: 0 ($gutter * 3) ($gutter / 2);
   vertical-align: middle;
 
   @include at-query ($min, $postSmall) {
@@ -1785,7 +1790,7 @@ label.error {
   }
 
   .icon {
-    font-size: 30px;
+    font-size: 3em;
     line-height: 26px;
   }
 
@@ -2255,13 +2260,35 @@ header.site-header {
 ==============================================================================*/
 .site-footer {
   background-color: $colorFooterBg;
-  padding: $gutter 0;
+  padding: ($gutter*5) 0;
   color: $colorFooterText;
 
   @include at-query ($min, $large) {
     padding: ($gutter * 2) 0;
   }
 }
+
+/* Space stuff out */
+footer .grid__item.large--one-third.medium--one-half {
+    margin: 1em 0;
+}
+
+/* Style links */
+footer a, footer span {
+    color: $raven;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: $largeLetterSpacing;
+    margin: 1em auto;
+}
+
+/* Style lists */
+ul.inline-list.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /*============================================================================
   #Product and Collection Grids
