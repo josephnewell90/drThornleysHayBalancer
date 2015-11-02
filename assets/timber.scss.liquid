@@ -56,7 +56,7 @@ $viewportIncrement: 1px;
 
 $small: 480px;
 $medium: 768px;
-$large: 769px;
+$large: 1024px;
 
 $postSmall: $small + $viewportIncrement;
 $preMedium: $medium - $viewportIncrement;
@@ -133,10 +133,12 @@ $colorDrawerText: #333;
 $drawerTransition: all 0.4s cubic-bezier(0.46, 0.01, 0.32, 1);
 
 // Sizing variables
-$siteWidth: 1180px;
+$siteWidth: 1920;
 $gutter: 2%;
 $gridGutter: 30px; // can be a %, but nested grids will have smaller margins because of it
 $radius: 3px;
+$largeLetterSpacing: .25em;
+$smallLetterSpacing: .15em;
 
 // Z-index
 $zindexNavDropdowns: 5;
@@ -295,6 +297,11 @@ html, body {
 
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
   display: block;
+}
+
+.featureDiagram figure {
+    width: 50%;
+    margin: 1em auto;
 }
 
 audio, canvas, progress, video {
@@ -720,12 +727,15 @@ body {
 
 .wrapper {
   @include clearfix();
-  max-width: $siteWidth;
   margin: 0 auto;
 
   @include at-query ($min, $small) {
-    padding: 0 $gutter;
+    padding: 0;
   }
+}
+
+.contianed {
+  max-width: $siteWidth;
 }
 
 .main-content {
@@ -780,6 +790,10 @@ body {
   margin: -1px; padding: 0; border: 0;
 }
 
+.relative {
+  position: relative;
+}
+
 /*============================================================================
   #Typography
 ==============================================================================*/
@@ -803,6 +817,8 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: $headerFontWeight;
   margin: 0 0 0.5em;
   line-height: 1.4;
+  letter-spacing: $largeLetterSpacing;
+  text-transform: uppercase;
 
   a {
     text-decoration: none;
@@ -845,6 +861,8 @@ h6 {
 
 p {
   margin: 0 0 ($gutter / 2) 0;
+  letter-spacing: $smallLetterSpacing;
+  padding: 0 $gutter;
 
   img {
     margin: 0;
@@ -1088,7 +1106,7 @@ html input[disabled] {
   display: inline-block;
   padding: 8px 10px;
   width: auto;
-  margin: 0;
+  margin: 2em 0;
   line-height: 1.42;
   font-weight: bold;
   text-decoration: none;
@@ -1100,7 +1118,9 @@ html input[disabled] {
   @include user-select(none);
   -webkit-appearance: none;
   -moz-appearance: none;
-  border-radius: $radius;
+  letter-spacing: $largeLetterSpacing;
+  text-transform: uppercase;
+  font-weight: 100;
 
   /*================ Set primary button colors - can override later ================*/
   background-color: $colorBtnPrimary;
@@ -1194,6 +1214,21 @@ ol.alpha { list-style: lower-alpha outside; }
     display: inline-block;
     margin-bottom: 0;
   }
+}
+
+/* Feature diagram list */
+.featureDiagram ol li {
+  color: #D27647;
+  list-style-position: inside;
+  font-size: 1.57143em;
+  margin-bottom: 2em;
+}
+.featureDiagram ol li h3 {
+  font-size: 1em;
+}
+.featureDiagram ol li p {
+  color: black;
+  font-size: .7em;
 }
 
 /*============================================================================
@@ -1339,6 +1374,7 @@ svg:not(:root) {
 img,
 iframe {
   max-width: 100%;
+  width: 100%;
 }
 
 .video-wrapper {
@@ -1360,16 +1396,23 @@ iframe {
 
 /* Set up main banner image */
 .mainBanner figcaption {
-    margin-top: -50%;
+    position: absolute;
     text-align: right;
+    bottom: 20%;
+    right: 2%;
+    width: 100%;
 }
 .mainBanner figcaption span {
     display: block;
-    margin: 1em 2%;
-    font-size: 2em;
+    margin: 0 2%;
+    font-size: 1.5em;
+    letter-spacing: $largeLetterSpacing;
+    text-transform: uppercase;
+    line-height: 1em;
 }
 .mainBanner figcaption a.btn {
     margin-right: 2%;
+    margin-top: 1em;
 }
 
 
@@ -1845,11 +1888,24 @@ label.error {
   }
 }
 
+nav {
+    padding: 0 2%;
+}
+header.site-header {
+    padding: 1% 2%;
+}
+
 /*============================================================================
   #Site Nav and Dropdowns
 ==============================================================================*/
 .nav-bar {
   background-color: $colorNav;
+}
+
+.nav-bar .icon::before  {
+  @include at-query ($max, $medium) {
+    font-size: 4em;
+  }
 }
 
 .site-nav {
