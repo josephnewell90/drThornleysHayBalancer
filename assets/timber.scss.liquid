@@ -151,10 +151,10 @@ $zindexDrawer: 10;
 
 /*================ Typography ================*/
 
-$headerFontStack: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$headerFontStack: 'Gentium Book Basic', serif;;
 $headerFontWeight: 700;
 
-$bodyFontStack: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$bodyFontStack: 'Questrial', sans-serif;;
 $baseFontSize: 14px; // Henseforth known as 1em
 
 @font-face {
@@ -799,6 +799,12 @@ body {
   position: relative;
 }
 
+.contained {
+  max-width: 700px;
+  margin: 0 auto;
+  float: none;
+}
+
 /*============================================================================
   #Typography
 ==============================================================================*/
@@ -1420,6 +1426,19 @@ iframe {
     margin-top: 1em;
 }
 
+@include at-query($min, $large) {
+  .mainBanner figcaption p span {
+    text-transform: initial;
+    font-size: 1em;
+    line-height: 1.5em;
+    margin: 0;
+  }
+
+  .mainBanner figcaption p {
+      margin: 2em 0;
+  }
+}
+
 
 /*============================================================================
   #Forms
@@ -1989,6 +2008,25 @@ header.site-header {
     &:focus {
       background-color: darken($colorNav, 10%);
     }
+  }
+}
+
+/* DESKTOP */
+@include at-query ($min, $large) {
+  div#PageContainer {
+    opacity: .3;
+    position: fixed;
+    width: 100%;
+    top: 0 !important;
+    left: 0;
+    z-index: 1;
+  }
+  .nav-bar {
+    background-color: black;
+  }
+
+  a.site-nav__link {
+      color: white;
   }
 }
 
