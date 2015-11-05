@@ -801,8 +801,25 @@ body {
 
 .contained {
   max-width: 700px;
-  margin: 0 auto;
+  margin: 5em auto;
   float: none;
+}
+
+.parallax {
+  background-attachment: fixed;
+  height: 200px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.fancyBorder {
+  margin: 5em auto;
+}
+
+.subText {
+  letter-spacing: $largeLetterSpacing;
+  color: rgba(0,0,0,.4);
 }
 
 /*============================================================================
@@ -1156,6 +1173,13 @@ html input[disabled] {
   }
 }
 
+.btn-primary {
+  @include at-query($min, $large) {
+    padding: 1em;
+    width: 13em;
+  }
+}
+
 .btn--secondary,
 .rte .btn--secondary {
   @extend .btn;
@@ -1439,6 +1463,11 @@ iframe {
   }
 }
 
+/* Parallax background image assignment */
+#dr-thornleys-hay-balancer .parallax {
+  background-image: url('http://placehold.it/1000x1000');
+  margin: 5em 0;
+}
 
 /*============================================================================
   #Forms
@@ -1926,6 +1955,13 @@ header.site-header {
   background-color: $colorNav;
 }
 
+@include at-query ($min, $large) {
+  .nav-bar .wrapper {
+      align-items: center;
+      display: flex;
+  }
+}
+
 .nav-bar .icon::before  {
   @include at-query ($max, $medium) {
     font-size: 4em;
@@ -2302,7 +2338,7 @@ header.site-header {
   color: $colorFooterText;
 
   @include at-query ($min, $large) {
-    padding: ($gutter * 2) 0;
+    padding: ($gutter * 2) 10%;
   }
 }
 
@@ -2325,6 +2361,33 @@ ul.inline-list.social-icons {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Rearrange the footer */
+@include at-query ($min, $large) {
+  .site-footer .wrapper .grid {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      width: 100%;
+      margin: 0;
+  }
+
+  footer .social {
+      order: 2;
+  }
+
+  footer .links {
+      order: 1;
+  }
+
+  footer .contact {
+      order: 3;
+  }
+
+  ul.inline-list.social-icons {
+      justify-content: left;
+  }
 }
 
 

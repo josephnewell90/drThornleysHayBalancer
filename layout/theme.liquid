@@ -379,7 +379,7 @@
       <div class="wrapper">
         <div class="grid">
           {% if settings.footer_social_enable %}
-            <div class="grid__item large--one-third medium--one-half">
+            <div class="grid__item large--one-third medium--one-half social">
               <h3 class="allCaps">Social</h3>
                 <ul class="inline-list social-icons">
                   {% if settings.social_instagram_link != blank %}
@@ -433,23 +433,21 @@
               </form>
             </div>
           {% endif %}
-          <div class="grid__item large--one-third medium--one-half">
+          <div class="grid__item large--one-third medium--one-half links">
             <h3 class="allCaps">Links</h3>
             {% for link in linklists.footer.links %}
               <a href="{{ link.url }}">{{ link.title }}</a>
             {% endfor %}
           </div>
           {% if settings.footer_contact_enable %}
-            <div class="grid__item large--one-third medium--one-half">
-              <h3 class="allCaps">Contact</h3>
-                <span>{{ settings.social_addressOne }}</span>
-                <span>{{ settings.social_addressTwo }}</span>
-            </div>
+          <div class="grid__item large--one-third medium--one-half contact">
+            <h3 class="allCaps">Contact</h3>
+              <span>{{ settings.social_addressOne }}</span>
+              <span>{{ settings.social_addressTwo }}</span>
           {% endif %}
           {% if settings.footer_email_enable %}
-            <div class="grid__item large--one-third medium--one-half">
-                <span><a href="mailto:{{ social_email_link }}">{{ settings.social_email }}</a></span>
-            </div>
+              <span><a href="mailto:{{ social_email_link }}">{{ settings.social_email }}</a></span>
+          </div>
           {% endif %}
         </div>
       </div>
