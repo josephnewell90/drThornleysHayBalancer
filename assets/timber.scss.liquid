@@ -32,6 +32,7 @@
   #Reponsive Tables
   #OOCSS Media Object
   #Images and Iframes
+  #Feature Diagram
   #Forms
   #Icons
   #Pagination
@@ -44,6 +45,7 @@
   #Collection Filters
   #Breadcrumbs
   #Product Page
+  #Testimonials Page
   #Notes and Form Feedback
   #Cart Page
   #Ajax Cart Styles
@@ -82,6 +84,7 @@ $colorPrimary: {{ settings.color_primary }};
 $colorSecondary: {{ settings.color_secondary }};
 
 // Template Colors
+$ivory: #FFFFFD;
 $raven: #7A818B;
 $sienna: #D27647;
 $asphalt: #140B06;
@@ -302,11 +305,6 @@ html, body {
 
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
   display: block;
-}
-
-.featureDiagram figure {
-    width: 50%;
-    margin: 1em auto;
 }
 
 audio, canvas, progress, video {
@@ -724,6 +722,11 @@ html {
 
 body {
   background-color: $colorBody;
+  @include at-query($min, $large) {
+    #template-page {
+      padding: 70px 0 0 0; /* Add some padding to the top of body so that it fits to the top of the screen and still goes below the nav bar */
+    }
+  }
 }
 
 [tabindex='-1']:focus {
@@ -822,6 +825,20 @@ body {
   color: rgba(0,0,0,.4);
 }
 
+.circle {
+  border-radius: 100%;
+}
+
+.allCaps {
+  text-transform: uppercase;
+}
+
+.smallLine {
+  width: 15%;
+  border: 1px solid $sienna;
+  margin: 2em auto;
+}
+
 /*============================================================================
   #Typography
 ==============================================================================*/
@@ -852,6 +869,31 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     font-weight: inherit;
   }
+}
+
+h2.subHeader {
+  text-transform: capitalize;
+  font-size: 1.5em;
+}
+
+figcaption {
+  font-family: $headerFontStack;
+}
+
+.citation {
+    color: $raven;
+    font-size: 1.5em;
+    display: block;
+    letter-spacing: $largeLetterSpacing;
+    font-family: $headerFontStack;
+    font-style: italic;
+}
+
+q {
+  font-family: $headerFontStack;
+  font-size: $headerFontWeight;
+  font-style: italic;
+  padding: 0 ($gutter*2);
 }
 
 /*================ Use em() Sass function to declare font-size ================*/
@@ -1251,21 +1293,6 @@ ol.alpha { list-style: lower-alpha outside; }
   }
 }
 
-/* Feature diagram list */
-.featureDiagram ol li {
-  color: $sienna;
-  list-style-position: inside;
-  font-size: 1.57143em;
-  margin-bottom: 2em;
-}
-.featureDiagram ol li h3 {
-  font-size: 1em;
-}
-.featureDiagram ol li p {
-  color: black;
-  font-size: .7em;
-}
-
 /*============================================================================
   #Tables
 ==============================================================================*/
@@ -1445,6 +1472,9 @@ iframe {
     text-transform: uppercase;
     line-height: 1em;
 }
+.mainBanner figcaption p {
+  font-family: $bodyFontStack;
+}
 .mainBanner figcaption a.btn {
     margin-right: 2%;
     margin-top: 1em;
@@ -1468,6 +1498,88 @@ iframe {
   background-image: url('http://placehold.it/1000x1000');
   margin: 5em 0;
 }
+
+/*============================================================================
+  #Feature Diagram
+==============================================================================*/
+.featureDiagram {
+  position: relative;
+}
+
+.featureDiagram div {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    justify-content: center;
+    width: 30%;
+}
+
+.featureDiagram div * {
+  flex-basis: 0;
+}
+
+.featureDiagram div figure {
+  width: 50%;
+  margin: 1em auto;
+  flex-grow: 1.5;
+}
+
+.featureDiagram div figure figcaption {
+  letter-spacing: $largeLetterSpacing;
+  color: $sienna;
+}
+
+.featureDiagram div p {
+  flex-grow: 1;
+  font-size: .8em;
+  visibility: hidden;
+}
+
+/* Mobile Feature Diagram list styles */
+.featureDiagram ol li {
+  color: $sienna;
+  list-style-position: inside;
+  font-size: 1.57143em;
+  margin-bottom: 2em;
+}
+.featureDiagram ol li h3 {
+  font-size: 1em;
+}
+.featureDiagram ol li p {
+  color: black;
+  font-size: .7em;
+}
+
+/* On hover of a dot, display the p */
+.featureDiagram div:hover p {
+  visibility: visible;
+}
+
+/* Position the dots */
+.featureDiagram .muscle {
+  flex-direction: row-reverse;
+  top: 0;
+  left: 2%;
+}
+
+.featureDiagram .gut {
+  flex-direction: row;
+  top: 0;
+  right: 2%;
+}
+
+.featureDiagram .bone {
+  flex-direction: row-reverse;
+  bottom: 0;
+  left: 2%;
+}
+
+.featureDiagram .hoof {
+  flex-direction: row;
+  bottom: 0;
+  right: 2%;
+}
+
 
 /*============================================================================
   #Forms
@@ -1972,6 +2084,9 @@ header.site-header {
   font-size: em(16px);
   cursor: default;
   margin: 0 0 0 (-$gutter / 2);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 
   li {
     margin: 0;
@@ -2063,6 +2178,8 @@ header.site-header {
 
   a.site-nav__link {
       color: white;
+      text-transform: uppercase;
+      letter-spacing: $largeLetterSpacing;
   }
 }
 
@@ -2457,6 +2574,23 @@ ul.inline-list.social-icons {
   }
 }
 
+/*============================================================================
+  #Testimonials Page
+==============================================================================*/
+.testimonialList {
+    background-color: #FBF9FB;
+    display: block;
+    vertical-align: top;
+    float: left;
+}
+
+.testimonial {
+    background-color: $ivory;
+    margin: 5em 0;
+    padding: 3em $gutter;
+    border-top: 2px solid $raven;
+    border-bottom: 2px solid $raven;
+}
 
 /*============================================================================
   #Notes and Form Feedback

@@ -1,0 +1,43 @@
+<!-- /templates/pages.templates.liquid -->
+
+{% comment %}
+  Use class grid-uniform to have evenly sized columns clear
+  each other properly at each breakpoint.
+{% endcomment %}
+<div class="grid-uniform">
+
+<div class="grid__item contained text-center">
+  <h1>Testimonials</h1>
+
+  <figure>
+    <img src="http://placehold.it/400x400" />
+  </figure>
+
+  <h2 class="subHeader">World Class Performance</h2>
+
+  <hr class="smallLine" />
+
+  <p class="mainTestimonial">"As a professional trainer, my livelihood depends on healthy horses that can perform year-round. I use Dr. Thornley's Hay Balancer as the nutritional supplement of choice in my barn. All of my horses and most of my clients' horses receive Hay Balancer daily as a key component of their alfalfa-based diets. Because I know the horses I train and show have all the nutrients they need without being overfed, I can count on them being strong, healthy, level-headed and performing like they should day-in and day-out."</p>
+  <span class="citation">- Jim Montgomery</span>
+  <span class="citation">Montgomery Performance Horses</span>
+
+  <div class="testimonialList">
+    {% for article in blogs.testimonials.articles %}
+
+      <div class="testimonial">
+        <figure>
+          <img src="{{ article | img_url: 'medium' }}" />
+        </figure>
+        <h2 class="subHeader">{{ article.title }}</h2>
+        {{ article.excerpt }}
+        <a href="/{{ article.url }}">Read More</a>
+      </div>
+
+    {% endfor %}
+
+    <a href="/blog/testimonials" class="allCaps">More Testimonials >></a>
+  </div>
+
+</div>
+
+</div>
