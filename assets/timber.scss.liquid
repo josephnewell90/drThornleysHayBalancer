@@ -723,7 +723,7 @@ html {
 body {
   background-color: $colorBody;
   @include at-query($min, $large) {
-    #template-page {
+    &.template-page {
       padding: 70px 0 0 0; /* Add some padding to the top of body so that it fits to the top of the screen and still goes below the nav bar */
     }
   }
@@ -890,10 +890,14 @@ figcaption {
 }
 
 q {
-  font-family: $headerFontStack;
-  font-size: $headerFontWeight;
+  font-family: "Gentium Book Basic",serif;
+  font-size: 1.15em;
   font-style: italic;
-  padding: 0 ($gutter*2);
+  letter-spacing: $smallLetterSpacing;
+  margin: 0 auto;
+  line-height: 1.15em;
+  display: block;
+  width: 90%;
 }
 
 /*================ Use em() Sass function to declare font-size ================*/
@@ -2577,11 +2581,17 @@ ul.inline-list.social-icons {
 /*============================================================================
   #Testimonials Page
 ==============================================================================*/
+
+#testimonials h1 {
+  font-size: 2em;
+}
+
 .testimonialList {
     background-color: #FBF9FB;
     display: block;
     vertical-align: top;
     float: left;
+    padding-bottom: 3em;
 }
 
 .testimonial {
@@ -2590,6 +2600,91 @@ ul.inline-list.social-icons {
     padding: 3em $gutter;
     border-top: 2px solid $raven;
     border-bottom: 2px solid $raven;
+}
+
+.featuredTestimonial a, .testimonialList a {
+    font-size: 1.15em;
+    letter-spacing: .25em;
+    font-family: "Gentium Basic Book", serif;
+    border-bottom: 1px solid #d27647;
+    padding-bottom: 2px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.featuredTestimonial figure {
+    width: 50%;
+    margin: 2em auto;
+}
+
+/* DESKTOP */
+@include at-query($min, $large) {
+
+  .featuredTestimonial {
+    border-right: 2px solid #7A818B;
+    border-bottom: 2px solid #7A818B;
+    border-left: 2px solid #7A818B;
+    border-radius: 0 0 15px 15px;
+    padding: 4em;
+  }
+
+  .testimonialList.medium-down--hide {
+      display: flex;
+      flex-basis: 0;
+      flex-wrap: wrap;
+      margin: 4em 0;
+      background-color: white;
+  }
+
+  .testimonial {
+      width: 46%;
+      margin: 2em 2%;
+      padding: 2em $gutter;
+      border: 2px solid #7a818b;
+      border-radius: 15px;
+      display: flex;
+      width: 46%;
+      align-items: center;
+      justify-content: left;
+  }
+
+  #testimonials .contained {
+      max-width: 1000px;
+  }
+
+  .testimonial figure {
+      width: 33%;
+      justify-content: left;
+  }
+
+  #testimonials .text {
+    width: 50%;
+    float:right;
+    text-align: left;
+  }
+
+  hr.smallLine {
+      display: none;
+  }
+
+  .testimonial p {
+      display: none;
+  }
+
+  q {
+      text-align: left;
+      margin: 1em 0;
+  }
+
+  h2.subHeader {
+      text-align: left;
+  }
+
+  .testimonial a {
+    text-align: left;
+    margin: 0;
+  }
+
 }
 
 /*============================================================================
