@@ -7,20 +7,18 @@
 <div class="grid-uniform">
 
 <div class="grid__item contained text-center">
-  <h1>Testimonials</h1>
 
   <div class="featuredTestimonial">
-    {% for article in blogs.testimonials.articles limit: 1 %}
-      {% for tag in article.tags %}
-        {% if tag == "Featured" %}
-          <figure>
-            <img src="{{ article | img_url: 'medium' }}" />
-          </figure>
-          <h2 class="subHeader">{{ article.title }}</h2>
-          {{ article.excerpt }}
-          <a href="/{{ article.url }}">Read More</a>
-          {% endif %}
-        {% endfor %}
+    {% for article in blogs.testimonials.articles %}
+      {% if article.tags contains "Featured" %}
+      <h1>Testimonials</h1>
+
+        <figure>
+          <img src="{{ article | img_url: 'medium' }}" />
+        </figure>
+        <h2 class="subHeader">{{ article.title }}</h2>
+        {{ article.excerpt }}
+      {% endif %}
     {% endfor %}
   </div>
 
@@ -33,6 +31,7 @@
           </figure>
           <h2 class="subHeader">{{ article.title }}</h2>
           {{ article.excerpt }}
+          {{ article.video }}
           <a href="/{{ article.url }}">Read More</a>
         </div>
       {% endunless %}
