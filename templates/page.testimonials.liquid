@@ -32,12 +32,12 @@
           <h2 class="subHeader">{{ article.title }}</h2>
           {{ article.excerpt }}
           {{ article.video }}
-          <a href="/{{ article.url }}">Read More</a>
+          <a href="{{ article.url }}">Read More</a>
         </div>
       {% endunless %}
     {% endfor %}
 
-    <a href="/blog/testimonials" class="">More Testimonials</a>
+    <a href="/blogs/testimonials" class="">More Testimonials</a>
   </div>
 
   <div class="testimonialList medium-down--hide">
@@ -50,13 +50,13 @@
           <div class="text">
             <h2 class="subHeader">{{ article.title }}</h2>
             {{ article.excerpt }}
-            <a href="/{{ article.url }}">Read More</a>
+            <a href="{{ article.url }}">Read More</a>
           </div>
         </div>
         {% endunless %}
       {% endfor %}
 
-    <a href="/blog/testimonials" class="">More Testimonials</a>
+    <a href="/blogs/testimonials" class="">More Testimonials</a>
   </div>
 
 </div>

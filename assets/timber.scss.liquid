@@ -726,8 +726,20 @@ body {
     &.template-page {
       padding: 70px 0 0 0; /* Add some padding to the top of body so that it fits to the top of the screen and still goes below the nav bar */
     }
+    &.template-blog {
+      padding-top: 70px;
+    }
+    &.template-article {
+      padding-top: 70px;
+    }
+    &.template-product {
+      padding-top: 70px;
+    }
     &#testimonials {
       padding: 0; /* Testimonials page needs to be thrown up so the borders of the featured testimonial collide with the menu */
+    }
+    &#testimonials.template-blog {
+      padding-top: 70px;
     }
   }
 }
@@ -842,6 +854,11 @@ body {
   margin: 2em auto;
 }
 
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 /*============================================================================
   #Typography
 ==============================================================================*/
@@ -901,6 +918,10 @@ q {
   line-height: 1.15em;
   display: block;
   width: 90%;
+}
+
+li {
+  letter-spacing: $smallLetterSpacing;
 }
 
 /*================ Use em() Sass function to declare font-size ================*/
@@ -2075,11 +2096,11 @@ header.site-header {
 }
 
 /* Change the color of non-main page header */
-.template-page #PageContainer {
+.template-page #PageContainer, .template-blog #PageContainer, .template-article #PageContainer, .template-product #PageContainer {
     opacity: 1;
 }
 
-.template-page .nav-bar {
+.template-page .nav-bar, .template-blog .nav-bar, .template-article .nav-bar, .template-product .nav-bar {
     background-color: $sienna;
 }
 
@@ -2553,10 +2574,11 @@ ul.inline-list.social-icons {
 ==============================================================================*/
 .breadcrumb {
   margin-bottom: $gutter;
+  display: none;
 
   a,
   span {
-    display: inline-block;
+    display: none;
     padding: 0 7px 0 0;
     margin-right: 7px;
 
@@ -2593,6 +2615,83 @@ ul.inline-list.social-icons {
     margin-bottom: $gutter;
   }
 }
+
+.template-product h1 {
+    text-align: center;
+}
+
+.product-single .grid__item {
+    padding: 0;
+    width: 90%;
+    margin: 0 auto;
+    float: none;
+}
+
+.product-single form span {
+    text-align: center;
+}
+
+.product-single p, li {
+  margin: 1em ($gutter/2);
+}
+
+/* Move the decription above the add to cart button */
+.productInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.productInfo > div {
+    order: 2;
+}
+
+.product-description.rte {
+    order: 1;
+}
+
+/* Free Trial */
+a.freeTrial {
+    display: block;
+    color: black;
+    font-family: "Gentium Basic Book",serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Tabs */
+.tabs {
+    margin: 4em 0;
+}
+
+.tabs h2 {
+    text-transform: initial;
+    text-align: center;
+    font-size: 1.4em;
+    line-height: inherit;
+}
+
+.tabs .tab span {
+    text-align: center;
+    display: block;
+    letter-spacing: $largeLetterSpacing;
+    font-weight: bold;
+    font-size: 1.3em;
+    background-color: #FBF9FB;
+    padding: 1em 0;
+}
+
+.tabs .flex figure {
+    width: 46%;
+    margin: 1em 2%;
+}
+
+.tabs .hidden {
+  height: 0;
+  overflow: hidden;
+}
+
+/* DESKTOP */
 
 /*============================================================================
   #Testimonials Page
@@ -2652,7 +2751,7 @@ ul.inline-list.social-icons {
     border-bottom: 2px solid #7A818B;
     border-left: 2px solid #7A818B;
     border-radius: 0 0 15px 15px;
-    padding: 4em;
+    padding: 4em 15%;
   }
 
   .testimonialList.medium-down--hide {
@@ -2717,6 +2816,10 @@ ul.inline-list.social-icons {
 
   .featuredTestimonial .smallLine {
     display: block;
+  }
+
+  .testimonialList > a {
+    margin: 4em auto;
   }
 
 }
