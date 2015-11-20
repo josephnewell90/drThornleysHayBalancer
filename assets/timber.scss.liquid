@@ -855,8 +855,14 @@ body {
 }
 
 .flex {
+  display: -webkit-flex;
     display: flex;
+    -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
+}
+
+.hidden {
+  display: none !important;
 }
 
 /*============================================================================
@@ -2633,20 +2639,38 @@ ul.inline-list.social-icons {
 
 .product-single p, li {
   margin: 1em ($gutter/2);
+  margin-top: 0;
 }
 
 /* Move the decription above the add to cart button */
 .productInfo {
+  display: -webkit-flex;
     display: flex;
+    -webkit-flex-direction: column;
     flex-direction: column;
 }
 
 .productInfo > div {
-    order: 2;
+  -webkit-order: 2;
+  order: 2;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
 }
 
 .product-description.rte {
+    -webkit-order: 1;
     order: 1;
+}
+
+form#AddToCartForm {
+  -webkit-order: 2;
+  order: 2;
+}
+
+button#AddToCart {
+  padding: 1em 2em;
 }
 
 /* Free Trial */
@@ -2662,6 +2686,8 @@ a.freeTrial {
 /* Tabs */
 .tabs {
     margin: 4em 0;
+    -webkit-order: 3;
+    order: 3;
 }
 
 .tabs h2 {
@@ -2671,7 +2697,7 @@ a.freeTrial {
     line-height: inherit;
 }
 
-.tabs .tab span {
+.tabButton {
     text-align: center;
     display: block;
     letter-spacing: $largeLetterSpacing;
@@ -2679,6 +2705,18 @@ a.freeTrial {
     font-size: 1.3em;
     background-color: #FBF9FB;
     padding: 1em 0;
+}
+.tabContainer {
+  text-align: center;
+}
+.tabButton.medium-down--hide {
+    display: inline-block;
+    width: 24%;
+    margin: 0 1em;
+    border-radius: 5px 5px 0 0;
+    &.active {
+      background-color:rgba(0,0,0,.04);
+    }
 }
 
 .tabs .flex figure {
@@ -2691,8 +2729,22 @@ a.freeTrial {
   overflow: hidden;
 }
 
-/* DESKTOP */
+.tab {
+    background-color: rgba(0,0,0,.04);
+    padding: 0 25%;
+}
+.tab.active {
+  padding: 2em 25%;
+}
 
+/* DESKTOP */
+@include at-query ($min, $large) {
+  .product-single .grid__item.large--one-half {
+    width: 45%;
+    display: inline-block;
+    margin: 0 2%;
+  }
+}
 /*============================================================================
   #Testimonials Page
 ==============================================================================*/

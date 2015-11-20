@@ -90,7 +90,7 @@
           </select>
 
           <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
-          <span id="ProductPrice" class="h2" itemprop="price">
+          <span id="ProductPrice" class="h2 hidden" itemprop="price">
             {{ current_variant.price | money }}
           </span>
 
@@ -100,6 +100,7 @@
               {{ 'products.product.compare_at' | t }} {{ current_variant.compare_at_price | money }}
             </p>
           {% endif %}
+
 
           <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
           <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
@@ -114,68 +115,6 @@
       <div class="product-description rte" itemprop="description">
         {{ product.description }}
       </div>
-
-
-
-      <div class="tabs">
-        <div class="tab" id="feedingInstructions">
-          <span class="allCaps tabButton">Feeding Instructions</span>
-          <div class="tabContent hidden" id="feedingInstructionsContent">
-            <p>Dr. Thornley's Hay Balancer is a highly palatable pellet that horses will consume with no additional feed. May be fed with whole oats or dry COB if desired.</p>
-            <p>Feed as the only supplement to grass hay. Do not mix with other supplements, unless directed by your veterinarian or nutritionist.</p>
-            <h2>Using enclosed scoop, feed as directed below:</h2>
-            <div class="flex">
-              <figure>
-                {{ 'Adult.png' | asset_url | img_tag }}
-              </figure>
-              <figure>
-                {{ 'OneScoop.png' | asset_url | img_tag }}
-              </figure>
-              <figure>
-                {{ 'Broodmare.png' | asset_url | img_tag }}
-              </figure>
-              <figure>
-                {{ 'TwoScoop.png' | asset_url | img_tag }}
-              </figure>
-              <figure>
-                {{ 'Foals.png' | asset_url | img_tag }}
-              </figure>
-              <figure>
-                {{ 'TwoScoop.png' | asset_url | img_tag }}
-              </figure>
-            </div>
-          </div>
-        </div>
-        <div class="tab" id="ingredients">
-          <span class="allCaps tabButton">Ingredients</span>
-          <div class="tabContent hidden" id="ingredientsContent">
-            <p>Dr. Thornley's Hay Balancer is a highly palatable pellet that horses will consume with no additional feed. May be fed with whole oats or dry COB if desired.</p>
-            <p>Feed as the only supplement to grass hay. Do not mix with other supplements, unless directed by your veterinarian or nutritionist.</p>
-            <h2>Using enclosed scoop, feed as directed below:</h2>
-            <div class="flex">
-              <figure>
-                {{ 'Adult.png' | asset_url | img_tag }}
-              </figure>
-              <figure>
-                {{ 'OneScoop.png' | asset_url | img_tag }}
-              </figure>
-              <figure>
-                {{ 'Broodmare.png' | asset_url | img_tag }}
-              </figure>
-              <figure>
-                {{ 'TwoScoop.png' | asset_url | img_tag }}
-              </figure>
-              <figure>
-                {{ 'Foals.png' | asset_url | img_tag }}
-              </figure>
-              <figure>
-                {{ 'TwoScoop.png' | asset_url | img_tag }}
-              </figure>
-          </div>
-        </div>
-      </div>
-
-    </div>
 
       {% comment %}
         If the user is on a collection product page (ie with /collections/collection-handle/products/product-handle)
@@ -199,9 +138,75 @@
       {% endif %}
 
     </div>
+
   </div>
 
 </div>
+
+  <div class="tabs full-width">
+    <div class="tabContainer">
+      <span class="tabButton medium-down--hide allCaps active" id="feedingInstructionsDesktop">Feeding Instructions</span>
+      <span class="tabButton medium-down--hide allCaps" id="ingredientsDesktop">Ingredients</span>
+    </div>
+
+    <div class="tab active">
+      <span class="allCaps large--hide tabButton" id="feedingInstructions">Feeding Instructions</span>
+      <div class="tabContent" id="feedingInstructionsContent">
+        <p>Dr. Thornley's Hay Balancer is a highly palatable pellet that horses will consume with no additional feed. May be fed with whole oats or dry COB if desired.</p>
+        <p>Feed as the only supplement to grass hay. Do not mix with other supplements, unless directed by your veterinarian or nutritionist.</p>
+        <h2>Using enclosed scoop, feed as directed below:</h2>
+        <div class="flex">
+          <figure>
+            {{ 'Adult.png' | asset_url | img_tag }}
+          </figure>
+          <figure>
+            {{ 'OneScoop.png' | asset_url | img_tag }}
+          </figure>
+          <figure>
+            {{ 'Broodmare.png' | asset_url | img_tag }}
+          </figure>
+          <figure>
+            {{ 'TwoScoop.png' | asset_url | img_tag }}
+          </figure>
+          <figure>
+            {{ 'Foals.png' | asset_url | img_tag }}
+          </figure>
+          <figure>
+            {{ 'TwoScoop.png' | asset_url | img_tag }}
+          </figure>
+        </div>
+      </div>
+    </div>
+    <div class="tab">
+      <span class="allCaps tabButton large--hide" id="ingredients">Ingredients</span>
+      <div class="tabContent hidden" id="ingredientsContent">
+        <p>Dr. Thornley's Hay Balancer is a highly palatable pellet that horses will consume with no additional feed. May be fed with whole oats or dry COB if desired.</p>
+        <p>Feed as the only supplement to grass hay. Do not mix with other supplements, unless directed by your veterinarian or nutritionist.</p>
+        <h2>Using enclosed scoop, feed as directed below:</h2>
+        <div class="flex">
+          <figure>
+            {{ 'Adult.png' | asset_url | img_tag }}
+          </figure>
+          <figure>
+            {{ 'OneScoop.png' | asset_url | img_tag }}
+          </figure>
+          <figure>
+            {{ 'Broodmare.png' | asset_url | img_tag }}
+          </figure>
+          <figure>
+            {{ 'TwoScoop.png' | asset_url | img_tag }}
+          </figure>
+          <figure>
+            {{ 'Foals.png' | asset_url | img_tag }}
+          </figure>
+          <figure>
+            {{ 'TwoScoop.png' | asset_url | img_tag }}
+          </figure>
+        </div>
+      </div>
+    </div>
+
+  </div>
 
 {% comment %}
   To take advantage of a callback on the select dropdown, add option_selection.js
@@ -248,20 +253,36 @@
 
   //Tab script
   $('.tabButton').click(function() {
-    var id = $(this).parent().id;
-    if (id == 'ingredients')
+    var id = $(this).attr('id');
+    if (id === 'ingredients')
     {
       $('#ingredientsContent').removeClass('hidden');
       $('#feedingInstructionsContent').removeClass('hidden');
       $('#ingredientsContent').slideDown('200');
       $('#feedingInstructionsContent').slideUp('200');
     }
+    else if (id === 'ingredientsDesktop')
+    {
+      $('#ingredientsDesktop').addClass('active');
+      $('#feedingInstructionsDesktop').removeClass('active');
+      $('#ingredientsContent').removeClass('hidden');
+      $('#feedingInstructionsContent').removeClass('hidden');
+      $('#ingredientsContent').slideDown('200');
+      $('#ingredientsContent').parent().addClass('active');
+      $('#feedingInstructionsContent').slideUp('200');
+      $('#feedingInstructionsContent').parent().removeClass('active');
+
+    }
     else
     {
+      $('#feedingInstructionsDesktop').addClass('active');
+      $('#ingredientsDesktop').removeClass('active');
       $('#feedingInstructionsContent').removeClass('hidden');
       $('#ingredientsContent').removeClass('hidden');
       $('#feedingInstructionsContent').slideDown('200');
+      $('#feedingInstructionsContent').parent().addClass('active');
       $('#ingredientsContent').slideUp('200');
+      $('#ingredientsContent').parent().removeClass('active');
     }
   });
 
