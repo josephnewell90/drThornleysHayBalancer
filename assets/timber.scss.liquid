@@ -45,7 +45,9 @@
   #Collection Filters
   #Breadcrumbs
   #Product Page
+  #Blog
   #Testimonials Page
+  #How It Works Page
   #Notes and Form Feedback
   #Cart Page
   #Ajax Cart Styles
@@ -56,7 +58,7 @@
 ==============================================================================*/
 $viewportIncrement: 1px;
 
-$small: 480px;
+$small: 768px;
 $medium: 768px;
 $large: 1024px;
 
@@ -757,6 +759,12 @@ body {
   }
 }
 
+.large--hide.medium-down--show {
+  @include at-query ($min, $medium) {
+    display: none;
+  }
+}
+
 .contianed {
   max-width: $siteWidth;
 }
@@ -1065,7 +1073,7 @@ hr {
 
 @include at-query ($min, $large) {
   .section-header {
-    display: table;
+    display: block;
     width: 100%;
   }
 
@@ -1208,7 +1216,7 @@ html input[disabled] {
 .btn,
 .rte .btn {
   display: inline-block;
-  padding: 8px 10px;
+  padding: 1em 0;
   width: auto;
   margin: 2em 0;
   line-height: 1.42;
@@ -1246,6 +1254,12 @@ html input[disabled] {
     cursor: default;
     color: $disabledBorder;
     background-color: $disabledGrey;
+  }
+
+  &.btn-center {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
   }
 }
 
@@ -1480,6 +1494,7 @@ iframe {
   padding-bottom: 56.25%;
   height: 0;
   height: auto;
+  margin: 6em 0;
 
   iframe {
     position: absolute;
@@ -2088,7 +2103,7 @@ label.error {
 }
 
 nav {
-    padding: 0 2%;
+    padding: 1em $gutter;
 }
 header.site-header {
     padding: 1% 2%;
@@ -2134,6 +2149,9 @@ a.site-header__cart-toggle.js-drawer-open-right {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  @include at-query($max, $large) {
+    padding: 0 1em;
+  }
 
   li {
     margin: 0;
@@ -2705,6 +2723,7 @@ a.freeTrial {
     font-size: 1.3em;
     background-color: #FBF9FB;
     padding: 1em 0;
+    cursor: pointer;
 }
 .tabContainer {
   text-align: center;
@@ -2745,6 +2764,68 @@ a.freeTrial {
     margin: 0 2%;
   }
 }
+
+/*============================================================================
+  #Blog
+==============================================================================*/
+
+  .template-article main {
+    @include at-query ($min, $large) {
+      padding-bottom: 0;
+    }
+  }
+
+  article {
+    margin-top: 3em;
+    @include at-query ($min, $large) {
+      border-left: 2px solid #EBEBEB;
+      border-right: 2px solid #EBEBEB;
+      margin: 0 auto !important;
+      padding-top: 7em;
+    }
+  }
+
+  article h1 {
+    font-size: 2em;
+  }
+
+  article h2 {
+    font-size: 1.5em;
+    text-transform: capitalize;
+  }
+
+  article h1, article h2 {
+      text-align: center;
+      @include at-query ($min, $large) {
+        dispay: block;
+        text-align: center;
+      }
+  }
+
+  .return {
+    padding: 4em 0;
+    text-align: center;
+    background-color: #FAFAFA;
+    border-top: 2px solid #EBEBEB;
+    margin-top: 4em;
+    @include at-query ($min, $large) {
+      background-color: inherit;
+      border: 0;
+    }
+  }
+
+  .return a {
+      font-family: "Gentium Basic Book", serif;
+      font-size: 1.5em;
+      font-style: italic;
+      letter-spacing: .25em;
+      border-bottom: 1px solid orange;
+  }
+
+  article q {
+    text-align: center;
+  }
+
 /*============================================================================
   #Testimonials Page
 ==============================================================================*/
@@ -2795,6 +2876,10 @@ a.freeTrial {
     margin: 2em auto;
 }
 
+.featuredTestimonial {
+  padding-top: 3em;
+}
+
 /* DESKTOP */
 @include at-query($min, $large) {
 
@@ -2804,6 +2889,7 @@ a.freeTrial {
     border-left: 2px solid #7A818B;
     border-radius: 0 0 15px 15px;
     padding: 4em 15%;
+    padding-top: 14%;
   }
 
   .testimonialList.medium-down--hide {
@@ -2875,6 +2961,134 @@ a.freeTrial {
   }
 
 }
+
+/*============================================================================
+  #How It Works Page
+==============================================================================*/
+@include at-query ($min, $large) {
+  #how-it-works {
+    padding-top: 150px;
+  }
+}
+
+#how-it-works .contained {
+  max-width: 1000px;
+}
+
+#how-it-works .wrapper.main-content .grid__item.large--two-thirds.push--large--one-sixth {
+  padding-top: 2em;
+}
+
+#how-it-works hr.smallLine {
+  display: block;
+}
+
+#how-it-works h1 {
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 2.3em;
+    margin: 0;
+}
+
+#how-it-works .contained {
+  margin: 0 auto;
+  padding: 0 $gutter;
+  text-align: center;
+}
+
+#how-it-works p {
+  margin: 1em 0;
+}
+
+#how-it-works .contained ul li {
+    text-align: left;
+    @include at-query ($min, $large) {
+      display: inline-block;
+      width: 40%;
+      vertical-align: top;
+      margin: 1em $gutter;
+    }
+}
+
+@include at-query ($min, $large) {
+
+  #how-it-works .contained ul {
+    margin: 1em 0;
+  }
+
+  #how-it-works .contained ul li:before {
+      content: ' ';
+      display: list-item;
+      float: left;
+  }
+  
+}
+
+#how-it-works .parallax {
+  background-image: url({{ 'Parallax.jpg' | asset_url }});
+  margin: 4em 0;
+  background-size: contain;
+  background-position: center top;
+  height: 200px;
+  @include at-query($max, $large) {
+    background-attachment: local;
+  }
+  @include at-query($min, $large) {
+    background-position: center 69%;
+  }
+}
+
+#how-it-works .parallax span {
+    font-family: "Gentium Basic Book", serif;
+    font-size: 1.3em;
+    font-weight: bold;
+    width: 35%;
+    display: block;
+    padding: 1em 0 0 1em;
+    @include at-query ($min, $large) {
+      font-size: 2em;
+      width: 24%;
+    }
+}
+
+.feature {
+  text-align: center;
+  padding: 0 15%;
+  margin: 3em 0;
+  text-decoration: none;
+  color: initial;
+  @include at-query ($min, $large) {
+    padding: 0 1%;
+    display: inline-block;
+    width: 33%;
+  }
+}
+
+.feature h2 {
+    font-size: 1.5em;
+    text-transform: capitalize;
+    margin: 0;
+}
+
+.feature .smallLine {
+    margin: 1em auto;
+}
+
+q.bigTestimonial {
+    font-style: normal;
+    font-family: "Questrial", sans-serif;
+    margin: 3em 0;
+    text-align: center;
+    letter-spacing: .25em;
+    @include at-query ($min, large) {
+      text-align: center;
+    }
+}
+
+#how-it-works footer {
+  margin-top: 3em;
+}
+
 
 /*============================================================================
   #Notes and Form Feedback
