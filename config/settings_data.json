@@ -1,5 +1,49 @@
 {
-  "current": "Default",
+  "current": {
+    "color_primary": "#d27647",
+    "color_secondary": "#bbb",
+    "color_body_bg": "#fff",
+    "color_borders": "#e5e5e5",
+    "color_body_text": "#333333",
+    "color_footer_bg": "#140b06",
+    "color_footer_text": "#7a818b",
+    "color_footer_social_link": "#7a818b",
+    "logo_use_image": true,
+    "logo_max_width": "450",
+    "favicon_enable": true,
+    "footer_social_enable": true,
+    "social_instagram_link": "https:\/\/instagram.com\/dr-thornleys-hay-balancer",
+    "social_twitter_link": "https:\/\/twitter.com",
+    "social_facebook_link": "https:\/\/www.facebook.com\/Dr-Thornleys-Hay-Balancer-1597475630463919\/",
+    "footer_newsletter_enable": false,
+    "newsletter_form_action": "",
+    "footer_contact_enable": true,
+    "social_addressOne": "901 E 981 S",
+    "social_addressTwo": "Orem, UT 84097",
+    "footer_email_enable": true,
+    "social_email": "todd@haybalancer.com",
+    "cart_notes_enable": true,
+    "cart_vendor_enable": false,
+    "ajax_cart_enable": true,
+    "twittercard_handle": "@",
+    "checkout_use_header_image": false,
+    "checkout_logo": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_use_body_background_image": false,
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_use_sidebar_background_image": false,
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#1990C6",
+    "checkout_button_color": "#1990C6",
+    "checkout_error_color": "#ff6d6d",
+    "social_addressOne_link": "ADDRESS LINE 1",
+    "social_addressTwo_link": "ADDRESS LINE 2",
+    "social_email_link": "EMAIL IF APPLICABLE"
+  },
   "presets": {
     "Default": {
       "ajax_cart_enable": true,
@@ -16,8 +60,8 @@
       "footer_newsletter_enable": true,
       "footer_social_enable": true,
       "logo_use_image": false,
-      "social_facebook_link": "https://www.facebook.com/shopify",
-      "social_twitter_link": "https://twitter.com/shopify"
+      "social_facebook_link": "https:\/\/www.facebook.com\/shopify",
+      "social_twitter_link": "https:\/\/twitter.com\/shopify"
     }
   }
 }

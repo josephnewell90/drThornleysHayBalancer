@@ -14,7 +14,10 @@
 <div class="grid-uniform">
 
 <figure class="fullScreen mainBanner relative">
-  <img src="http://placehold.it/1920x1080"/>
+  <video autoplay style="width: 100%;"> 
+    <source src="http://wallaroomedia.com/wp-content/uploads/2015/11/DrThornleysMainPageVideo.mp4" type="video/mp4"> 
+    Your browser does not support the video tag. 
+  </video>
   <figcaption>
     <span>Do they know</span>
     <span>you care?</span>
@@ -23,13 +26,13 @@
   </figcaption>
 </figure>
 
-<div class="grid__item text-center contained">
+<div class="grid__item text-center contained" style="margin:12em auto">
   <figure>
-    <img src="http://placehold.it/800x800" />
+    <img src="https://cdn.shopify.com/s/files/1/1041/3114/files/Alfalfa.png?10940354412192357792" style="width:20%"/>
   </figure>
-  <h2>All in one</h2>
+  <h2 class="homepage-section-header">All in one</h2>
   <p>One vitamin and mineral supplement to strengthen and support muscle, body, bones, joint, gut, digestion, hoof and hair. Your horses are family. Don't let health become a concern.</p>
-  <a href="/pages/30-days-free" class="btn btn-primary">30-Day Trial</a>
+  <a href="/pages/30-days-free" class="btn btn-primary">30-Days Free</a>
 </div>
 
 <div class="parallax">
@@ -44,13 +47,13 @@
   <div class="large--hide featureDiagram">
 
     <figure>
-      <img src="http://placehold.it/800x800" />
+      <img src="{{ 'HorseDiagram_Mobile_1024.jpg' | asset_url}}" />
     </figure>
 
     <ol>
 
       <figure>
-        <img src="http://placehold.it/150x150" />
+        <img src="{{ 'Muscle.png' | asset_url}}" />
       </figure>
       <li>
         <h3>Muscle &amp; Body</h3>
@@ -58,7 +61,7 @@
       </li>
 
       <figure>
-        <img src="http://placehold.it/150x150" />
+        <img src="{{ 'Digestion.png' | asset_url}}" />
       </figure>
       <li>
         <h3>Gut &amp; Digestion</h3>
@@ -66,7 +69,7 @@
       </li>
 
       <figure>
-        <img src="http://placehold.it/150x150" />
+        <img src="{{ 'Bone.png' | asset_url}}" />
       </figure>
       <li>
         <h3>Bone &amp; Joint</h3>
@@ -74,7 +77,7 @@
       </li>
 
       <figure>
-        <img src="http://placehold.it/150x150" />
+        <img src="{{ 'Hoof.png' | asset_url}}" />
       </figure>
       <li>
         <h3>Hoof &amp; Hair</h3>
@@ -87,14 +90,14 @@
 
   <div class="medium-down--hide featureDiagram">
     <figure>
-      <img src="http://placehold.it/800x300" />
+      <img src="https://cdn.shopify.com/s/files/1/1041/3114/files/HorseDiagram.jpg?6994464507822098686" />
     </figure>
-    <div class="muscle">
+   <!-- <div class="muscle">
       <figure>
         <figcaption class="allCaps">
           Muscle &amp; Body
         </figcaption>
-        <img class="circle" src="http://placehold.it/300x300" />
+        <img class="circle" src="{{ 'Muscle.png' | asset_url }}" />
       </figure>
       <p>The essential amino acids lysine and threonine provide the building blocks for optimal muscle growth, muscle mass retention and improved performance.</p>
     </div>
@@ -103,7 +106,7 @@
         <figcaption class="allCaps">
           Gut &amp; Digestion
         </figcaption>
-        <img class="circle" src="http://placehold.it/300x300" />
+        <img class="circle" src="{{ 'Digestion.png' | asset_url }}" />
       </figure>
       <p>Diamond V yeast cultures promote a healthy guyt, which increases feed digestibility and vitamin absorption, and maintains digestion during stress.</p>
     </div>
@@ -112,7 +115,7 @@
         <figcaption class="allCaps">
           Bone &amp; Joint
         </figcaption>
-        <img class="circle" src="http://placehold.it/300x300" />
+        <img class="circle" src="{{ 'Bone.png' | asset_url }}" />
       </figure>
       <p>Balanced calcium and phosphorous, as well as trace minerals like zinc, copper and magnesim, supply the basis for proper bone and joint development and maintenance.</p>
     </div>
@@ -121,30 +124,30 @@
         <figcaption class="allCaps">
           Hoof &amp; Hair
         </figcaption>
-        <img class="circle" src="http://placehold.it/300x300" />
+        <img class="circle" src="{{ 'Hoof.png' | asset_url }}" />
       </figure>
       <p>Crucial trace minerals and the essential amino acids lysine and methionine provide the critical building blocks for healthy hooves and hair.</p>
-    </div>
+    </div> -->
   </div>
 
-  <figure class="fancyBorder contained">
-    <img src="http://placehold.it/1000x100" />
+  <figure class="fancyBorder contained" style="margin: 4em auto !important;">
+    <img src="https://cdn.shopify.com/s/files/1/1041/3114/files/DecorativeLeaf.png?16683123181428815579" />
   </figure>
 
-  <div class="grid__item text-center contained flex productEnd">
+  <div class="text-center contained productEnd">
     <h2>A revolutionary solution</h2>
 
     <p>Hay Balancer is a vitamin and mineral supplement for horses on a hay diet. It balances macro-minerals, provides critical trace minerals, improves the protein profile of hay, provides critical essential amino acids and includes stable yeast cultures and important vitamins to improve digestion and gut health.</p>
 
-    <a href="#" class="btn btn-primary">Purchase</a>
+    <a href="/products/all" class="btn btn-primary medium-down--hide">Purchase</a>
 
     <figure>
-      <img src="http://placehold.it/800x800" />
+      <img src="{{ 'TwoBagsHay_1000.jpg' | asset_url }}"
     </figure>
 
     <div class="large--hide">
 
-      <a href="#">
+      <a href="/products/hay-balancer-g">
         <figure>
           <img src="http://placehold.it/300x700">
         </figure>
@@ -152,7 +155,10 @@
 
       <p>Hay Balancer G is a premium vitamin and mineral supplement for horses on a grass hay diet.</p>
 
-      <a href="#">
+      <a href="products/hay-balancer-g" class="btn btn-primary">Purchase</a>
+
+
+      <a href="products/hay-balancer-a">
         <figure>
           <img src="http://placehold.it/300x700">
         </figure>
@@ -160,7 +166,7 @@
 
       <p>Hay Balancer A is a premium vitamin and mineral supplement for horses on an alfalfa hay diet.</p>
 
-      <a href="#" class="btn btn-primary">Purchase</a>
+      <a href="products/hay-balancer-a" class="btn btn-primary">Purchase</a>
     </div>
   </div>
 

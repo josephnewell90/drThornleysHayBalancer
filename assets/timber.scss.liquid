@@ -51,6 +51,7 @@
   #Notes and Form Feedback
   #Cart Page
   #Ajax Cart Styles
+  #Wallaroo Style
 ==============================================================================*/
 
 /*============================================================================
@@ -726,7 +727,7 @@ body {
   background-color: $colorBody;
   @include at-query($min, $large) {
     &.template-page {
-      padding: 70px 0 0 0; /* Add some padding to the top of body so that it fits to the top of the screen and still goes below the nav bar */
+      padding-top: $gutter * 7; /* Add some padding to the top of body so that it fits to the top of the screen and still goes below the nav bar */
     }
     &.template-blog {
       padding-top: 70px;
@@ -735,13 +736,16 @@ body {
       padding-top: 70px;
     }
     &.template-product {
-      padding-top: 70px;
+      padding-top: $gutter * 4.5;
     }
     &#testimonials {
-      padding: 0; /* Testimonials page needs to be thrown up so the borders of the featured testimonial collide with the menu */
+      padding-top: $gutter * 2; /* Testimonials page needs to be thrown up so the borders of the featured testimonial collide with the menu */
     }
     &#testimonials.template-blog {
-      padding-top: 70px;
+      padding-top: $gutter * 8;
+    }
+    &.template-collection {
+      padding-top: $gutter * 6;
     }
   }
 }
@@ -772,6 +776,7 @@ body {
 .main-content {
   display: block;
   padding-bottom: $gutter * 2;
+
 }
 
 .fullScreen {
@@ -871,6 +876,11 @@ body {
 
 .hidden {
   display: none !important;
+}
+
+.featureDiagram.large--hide ol figure {
+    width: 45%;
+    margin: 2em auto 0;
 }
 
 /*============================================================================
@@ -1216,7 +1226,7 @@ html input[disabled] {
 .btn,
 .rte .btn {
   display: inline-block;
-  padding: 1em 0;
+  padding: 1em;
   width: auto;
   margin: 2em 0;
   line-height: 1.42;
@@ -1261,12 +1271,22 @@ html input[disabled] {
     margin: 0 auto;
     display: block;
   }
+  &.btn-center {
+    width: 35%;
+  }
+  &.btn-testimonials {
+    width: 60%;
+  }
+  &.btn-shop-purchases {
+    margin: 0;
+  }
 }
 
 .btn-primary {
   @include at-query($min, $large) {
     padding: 1em;
     width: 13em;
+    font-family: "Questrial",sans-serif;
   }
 }
 
@@ -1485,6 +1505,7 @@ img,
 iframe {
   max-width: 100%;
   width: 100%;
+  border: 0;
 }
 
 .video-wrapper {
@@ -1520,6 +1541,7 @@ iframe {
     letter-spacing: $largeLetterSpacing;
     text-transform: uppercase;
     line-height: 1em;
+  	color: #fff;
 }
 .mainBanner figcaption p {
   font-family: $bodyFontStack;
@@ -1544,8 +1566,12 @@ iframe {
 
 /* Parallax background image assignment */
 #dr-thornleys-hay-balancer .parallax {
-  background-image: url('http://placehold.it/1000x1000');
+  background-image: url('Horse_parallax_1920.jpg');
+  background-size: contain;
   margin: 5em 0;
+  @include at-query ($min, $large) {
+    height: 400px;
+  }
 }
 
 /*============================================================================
@@ -1585,6 +1611,9 @@ iframe {
 }
 
 /* Mobile Feature Diagram list styles */
+.featureDiagram ol {
+  margin: 0;
+}
 .featureDiagram ol li {
   color: $sienna;
   list-style-position: inside;
@@ -1597,6 +1626,14 @@ iframe {
 .featureDiagram ol li p {
   color: black;
   font-size: .7em;
+}
+
+/* Desktop feature diagram */
+.medium-down--hide.featureDiagram > figure {
+    padding: 0 15%;
+}
+.medium-down--hide.featureDiagram {
+    margin: 6em 0;
 }
 
 /* On hover of a dot, display the p */
@@ -1887,13 +1924,15 @@ label.error {
 }
 
 .input-group .input-group-field {
-  width: 100%;
+  width: 99%;
+  display: inline-block;
 }
 
 .input-group-btn {
   position: relative;
   white-space: nowrap;
   width: 1%;
+  display: inline-block;
   padding: 0;
 }
 
@@ -2055,8 +2094,9 @@ label.error {
 
 .site-header__logo {
   text-align: center;
-  margin: 0 auto;
+  margin: 5px auto;
   max-width: 100%;
+  width:65%;
 
   @include at-query ($min, $large) {
     text-align: left;
@@ -2117,11 +2157,11 @@ header.site-header {
 }
 
 /* Change the color of non-main page header */
-.template-page #PageContainer, .template-blog #PageContainer, .template-article #PageContainer, .template-product #PageContainer {
+.template-page #PageContainer, .template-blog #PageContainer, .template-article #PageContainer, .template-product #PageContainer, .template-collection #PageContainer {
     opacity: 1;
 }
 
-.template-page .nav-bar, .template-blog .nav-bar, .template-article .nav-bar, .template-product .nav-bar {
+.template-page .nav-bar, .template-blog .nav-bar, .template-article .nav-bar, .template-product .nav-bar, .template-collection .nav-bar {
     background-color: $sienna;
 }
 
@@ -2164,6 +2204,9 @@ a.site-header__cart-toggle.js-drawer-open-right {
   }
 }
 
+.site-nav__link:hover, .site-nav__link:active, .site-nav__link:focus {
+    color: #B0B0B0 !important;
+}
 /*================ Home to hamburger and cart that toggle drawers ================*/
 .site-nav--mobile {
   @extend .site-nav;
@@ -2660,12 +2703,44 @@ ul.inline-list.social-icons {
   margin-top: 0;
 }
 
+.product-contained {
+  max-width: 1000px;
+  margin: 5em auto;
+  float: none;
+}
+
+#ProductThumbs {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  margin: 0 auto;
+}
+
+#ProductThumbs li {
+  padding: 0 1em;
+}
+
+.product-single-content {
+  margin-top: 8em;
+}
+
+.single-product-after-img {
+  display: block;
+  color: black;
+  font-family: "Gentium Basic Book",serif;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.2em;
+  letter-spacing: .125em;
+  text-align: left;
+}
+
 /* Move the decription above the add to cart button */
 .productInfo {
   display: -webkit-flex;
     display: flex;
     -webkit-flex-direction: column;
     flex-direction: column;
+  font-weight: 600;
 }
 
 .productInfo > div {
@@ -2675,6 +2750,7 @@ ul.inline-list.social-icons {
   display: flex;
   -webkit-flex-direction: column;
   flex-direction: column;
+  padding: 0 0 0 3em;
 }
 
 .product-description.rte {
@@ -2699,6 +2775,7 @@ a.freeTrial {
     font-style: italic;
     font-weight: bold;
     font-size: 1.2em;
+  	letter-spacing: .125em;
 }
 
 /* Tabs */
@@ -2739,8 +2816,8 @@ a.freeTrial {
 }
 
 .tabs .flex figure {
-    width: 46%;
-    margin: 1em 2%;
+    width: 36%;
+    margin: 1em auto;
 }
 
 .tabs .hidden {
@@ -2816,7 +2893,7 @@ a.freeTrial {
 
   .return a {
       font-family: "Gentium Basic Book", serif;
-      font-size: 1.5em;
+      font-size: 1.15em;
       font-style: italic;
       letter-spacing: .25em;
       border-bottom: 1px solid orange;
@@ -2824,6 +2901,12 @@ a.freeTrial {
 
   article q {
     text-align: center;
+  }
+
+  .template-article .citation {
+    display: block;
+    text-align: center;
+    margin: 1em 0;
   }
 
 /*============================================================================
@@ -2864,10 +2947,8 @@ a.freeTrial {
 .featuredTestimonial a, .testimonialList a {
     font-size: 1.15em;
     letter-spacing: .25em;
-    font-family: "Gentium Basic Book", serif;
     border-bottom: 1px solid #d27647;
     padding-bottom: 2px;
-    font-style: italic;
     font-weight: bold;
 }
 
@@ -2916,8 +2997,17 @@ a.freeTrial {
   }
 
   .testimonial figure {
-      width: 33%;
       justify-content: left;
+  }
+
+  .featuredTestimonial p {
+    margin-bottom: 4%;
+  }
+
+  span.citation {
+    font-size: 1em;
+    Letter-spacing: .25em;
+    line-height: 1.5em;
   }
 
   #testimonials .text {
@@ -2928,6 +3018,10 @@ a.freeTrial {
 
   hr.smallLine {
       display: none;
+  }
+
+  .template-article hr.smallLine {
+    display: block;
   }
 
   .testimonial p {
@@ -2960,6 +3054,16 @@ a.freeTrial {
     margin: 4em auto;
   }
 
+  #testimonials .grid__item.large--one-quarter {
+    display: none;
+  }
+
+  #testimonials .grid__item.large--three-quarters {
+    width: 60%;
+    margin: 0 auto;
+    float: none;
+  }
+
 }
 
 /*============================================================================
@@ -2988,6 +3092,7 @@ a.freeTrial {
     text-transform: capitalize;
     font-size: 2.3em;
     margin: 0;
+  	letter-spacing: .125em;
 }
 
 #how-it-works .contained {
@@ -3010,6 +3115,14 @@ a.freeTrial {
     }
 }
 
+#how-it-works .contained figure img {
+  margin: 0 0 -15px 0;
+}
+
+#how-it-works .contained .bottom-row {
+  margin-bottom: 10em;
+}
+
 @include at-query ($min, $large) {
 
   #how-it-works .contained ul {
@@ -3021,7 +3134,7 @@ a.freeTrial {
       display: list-item;
       float: left;
   }
-  
+
 }
 
 #how-it-works .parallax {
@@ -3029,7 +3142,7 @@ a.freeTrial {
   margin: 4em 0;
   background-size: contain;
   background-position: center top;
-  height: 200px;
+  height: 400px;
   @include at-query($max, $large) {
     background-attachment: local;
   }
@@ -3039,12 +3152,13 @@ a.freeTrial {
 }
 
 #how-it-works .parallax span {
-    font-family: "Gentium Basic Book", serif;
+    font-family: "Gentium Book Basic", serif;
     font-size: 1.3em;
     font-weight: bold;
     width: 35%;
     display: block;
     padding: 1em 0 0 1em;
+  	letter-spacing: .125em;
     @include at-query ($min, $large) {
       font-size: 2em;
       width: 24%;
@@ -3058,7 +3172,7 @@ a.freeTrial {
   text-decoration: none;
   color: initial;
   @include at-query ($min, $large) {
-    padding: 0 1%;
+    padding: 0 2.5%;
     display: inline-block;
     width: 33%;
   }
@@ -3080,6 +3194,7 @@ q.bigTestimonial {
     margin: 3em 0;
     text-align: center;
     letter-spacing: .25em;
+  	line-height: 1.25em;
     @include at-query ($min, large) {
       text-align: center;
     }
@@ -3089,6 +3204,93 @@ q.bigTestimonial {
   margin-top: 3em;
 }
 
+/*============================================================================
+  #Shop Page
+==============================================================================*/
+#shop .grid {
+  margin-top: 10em;
+}
+
+.fancy {
+  line-height: 0.5;
+  text-align: center;
+}
+.fancy span {
+  display: inline-block;
+  position: relative;
+}
+.fancy span:before,
+.fancy span:after {
+  content: "";
+  position: absolute;
+  height: 16px;
+  border-bottom: 3px solid #000000;
+  border-top: 3px solid #000000;
+  top: 0;
+  width: 4em;
+}
+.fancy span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+.fancy span:after {
+  left: 100%;
+  margin-left: 15px;
+}
+
+.shop-under-img {
+  font-size: 1.25em;
+  letter-spacing: .125em;
+  font-style: italic;
+  text-align: center;
+}
+
+#shop figure {
+  width: 50%;
+  margin: 0 auto .2em auto;
+}
+
+.shop-product-title {
+  text-transform: none;
+  line-height: 1em;
+}
+
+.shop-product-title .grass-title:after {
+  content: "";
+  position: absolute;
+  top: 3.5em;
+  right: 16.8em;
+  width: 4em;
+  border-bottom: 2px solid #007C62;
+}
+
+.shop-product-title .alfalfa-title:after {
+  content: "";
+  position: absolute;
+  top: 20em;
+  right: 16.8em;
+  width: 4em;
+  border-bottom: 2px solid #672E8F;
+}
+
+.shop-product-desc {
+  margin: 3em 0;
+}
+
+#shop .btn-shop-purchases a,
+#shop .btn-shop-purchases a:hover,
+#shop .btn-shop-purchases a:focus,
+#shop .btn-shop-purchases a:visited {
+  text-decoration: none;
+  color: #FFF;
+}
+
+#shop .shop-under-img a,
+#shop .shop-under-img a:hover,
+#shop .shop-under-img a:focus,
+#shop .shop-under-img a:visited {
+  text-decoration: none;
+}
 
 /*============================================================================
   #Notes and Form Feedback
@@ -3374,3 +3576,40 @@ q.bigTestimonial {
 }
 
 {% endif %} // settings.ajax_cart_enable
+
+/*============================================================================
+  #Wallaroo Style
+==============================================================================*/
+.homepage-section-header {
+  margin: .5em 0;
+}
+
+.footer-header {
+  font-size: 1.25em;
+}
+
+footer a:hover {
+  color: #d47640;
+}
+
+.aboutus-table {
+  margin-top: 5em;
+}
+
+.aboutus-table tr td {
+  border: none;
+}
+
+.works-content-wrapper {
+  margin-top: 5em;
+}
+
+#how-it-works .grid__item.large--two-thirds.push--large--one-sixth {
+  width: 100%;
+  left: 0;
+}
+
+.free-trial-img {
+  width: 33%;
+  margin: 0 auto;
+}
